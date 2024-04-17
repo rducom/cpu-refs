@@ -10,9 +10,9 @@ jobs:
     runs-on: ${{matrix.runs-on}}
     steps: 
       - name: Run lscpu ubuntu
-        if: ${{ matrix.config.os == 'ubuntu-latest' }}
+        if: runner.os == 'Linux'
         run: lscpu
       - name: Run lscpu windows
-        if: ${{ matrix.config.os == 'windows-latest' }}
+        if: runner.os == 'Windows'
         shell: pwsh
         run: systeminfo
