@@ -8,13 +8,11 @@ jobs:
         name: [1...50]
     name: Display lscpu - ${{matrix.name}}
     runs-on: ${{matrix.runs-on}}
-    steps:
-      - name: Display
-        run: echo ${{ matrix.os }}
+    steps: 
       - name: Run lscpu ubuntu
-        if: matrix.os == 'ubuntu-latest'
+        if: ${{ matrix.os == 'ubuntu-latest' }}
         run: lscpu
       - name: Run lscpu windows
-        if: matrix.os == 'windows-latest'
+        if: ${{ matrix.os == 'windows-latest' }}
         shell: pwsh
         run: systeminfo
