@@ -4,7 +4,7 @@ jobs:
   build:
     strategy:
       matrix:
-        runs-on: [ubuntu-latest]
+        runs-on: [ubuntu-latest, windows-latest]]
         name: [1...50]
     name: Display lscpu - ${{matrix.name}}
     runs-on: ${{matrix.runs-on}}
