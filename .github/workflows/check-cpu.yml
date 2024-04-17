@@ -4,15 +4,18 @@ jobs:
   build:
     strategy:
       matrix:
-        runs-on: [ubuntu-latest, windows-latest]
+        runs-on: [ubuntu-latest, windows-latest, macos-latest]
         name: [1...50]
     name: Display lscpu - ${{matrix.name}}
     runs-on: ${{matrix.runs-on}}
     steps: 
-      - name: Run lscpu ubuntu
+      - name: ubuntu
         if: runner.os == 'Linux'
         run: lscpu
-      - name: Run lscpu windows
+      - name: windows
         if: runner.os == 'Windows'
         shell: pwsh
         run: systeminfo
+      - name: mac
+        if: runner.os == 'macOS'
+        run: system_profiler SPHardwareDataType
